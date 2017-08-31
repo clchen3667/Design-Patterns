@@ -1,2 +1,2 @@
 # Design-Patterns
-Design Patterns：C ++ language description
+Design Patterns(C++ language description)
