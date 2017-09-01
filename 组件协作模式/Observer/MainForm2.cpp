@@ -1,0 +1,27 @@
+class MainForm : public Form, public IProgress
+{
+	TextBox* txtFilePath;
+	TextBox* txtFileNumber;
+	ProgressBar* progressBar;
+public:
+	void Button1_click(){
+		string filePath = txtFilePath->getText();
+		int number = atoi(txtFileNumber->getText().c_str());
+		ConsoleNotifier cn;
+		FileSplitter splitter(filePath,fileNumber);
+		splitter.addIProgress(this);
+		splitter.addIProgress(&cn);
+		splitter.split();
+		splitter.removeIProgress(this);
+	}
+	virtual void DoProgress(float value){
+		progressBar->setValue(value);
+	}
+};
+
+class ConsoleNotifier : public IProgress{
+public:
+	virtual void DoProgress(float value){
+		cout << ".";
+	}
+};
